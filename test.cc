@@ -38,7 +38,10 @@ int main() {
     {
         const char* tmp = getString();;
         int len = 4096;
-        sbc->_write(i/4096, tmp, i*4096, len);
+        sbc->write(i/4096, tmp, i*4096, len);
+        char ntmp[4096];
+        sbc->read(i/4096, ntmp, i*4096, len);
+        assert(strcmp(tmp, ntmp));
     }
 
     
